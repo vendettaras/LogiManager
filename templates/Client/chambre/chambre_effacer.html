@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container" style="height: 50vh; margin-top: 75px">
+
+    <p>
+    <h2>Êtes-vous sûr de supprimer la chambre <span class="text-danger ml-2" style="color: rgb(155,196,226)">{{item}}"</span><span> du "{{item.addresse}}"</span></h2>
+    </p>
+
+    <form action="{% url 'chambre_effacer' item.id %}" method="POST">
+        {% csrf_token %}
+
+        <input class="btn btn-danger" type="submit" value="Supprimer">
+        <a href="{% url 'menu' %}" class="btn btn-warning" type="disabled" role="button">Annuler</a>
+    </form>
+
+</div>
+{% endblock %}

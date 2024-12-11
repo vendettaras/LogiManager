@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% comment %} <div class="container">
+  <div class="col-lg-9 m-auto">
+    <div class="row mb-3">
+      <div class="col-md-4 text-start">
+        <h5><i class="fa fa-user"></i> <span>{{ client.prenom }} {{ client.nom }}</span></h5>
+      </div>
+      <div class="col-md-6 text-start">
+        <h5><i class="fa fa-phone mr-2"></i> <span>{{ client.contact }}</span></h5>
+      </div>
+    <div class="row mb-3">
+      <div class="col-md-6 text-start">
+        <h5><i class="fa fa-credit-card mr-2"></i> <span>{{ client.cin }}</span></h5>
+      </div>
+      <div class="col-md-6 text-start">
+        <h5><i class="fa fa-venus-mars mr-2"></i> <span>{{ client.sexe }}</span></h5>
+      </div>
+      <div class="col-md-6 text-start">
+        <h5><i class="fa fa-suitcase mr-2"></i> <span>{{ client.profession }}</span></h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="{% url 'client_modifier' client.id %}" class="btn btn-primary" role="button">Modifier</a>
+        <table class="table table-sm table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">Début</th>
+              <th scope="col" class="text-center">Fin</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col" class="text-center">Client</th>
+              <th scope="col" class="text-center">Date de payement</th>
+              <th scope="col" class="text-center">Réf Chambre</th>
+              <th scope="col" class="text-center">Bâtiment</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for abonnement in abonnements%}
+            <tr>
+              <th class="text-center">{{ abonnement.debut }}</th>
+              <td class="text-center">{{ abonnement.fin }}</td>
+              <td class="text-center">{{ abonnement.status }}</td>
+              <td class="text-center">{{ abonnement.dateDePayement }}</td>
+              <td class="text-center">{{ abonnement.chambre }}</td>
+              <td class="text-center">{{ abonnement.appartement }}</td>
+              <td class="text-center">   
+                <a href="#" class="btn btn-primary" role="button">Modifier</a>
+              </td>
+            </tr>
+           {% endfor %}
+          </tbody>
+        </table>
+        <a href="{% url 'menu' %}" class="btn btn-danger" role="button">Retour</a>
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+
+  <div class="container" style="margin-top: 50px;height: 500px;">
+    <div class="row">
+        <div class="col-md-12 offset-xl-0" style="height: 250px;">
+            <div class="row" style="width: 1142px;height: 218px;margin: 17px -12px 0px;margin-top: 21px;margin-bottom: 0px;">
+                <div class="col offset-xl-1 text-center" style="width: 520px;height: 210px;">
+                  <h5 style="padding: 15px"><i class="fa fa-user"></i> <span>{{ client.prenom }} {{ client.nom }}</span></h5>
+                  <h5 style="padding: 15px"><i class="fa fa-phone mr-2"></i> <span>{{ client.contact }}</span></h5>
+                  <h5 style="padding: 15px"><i class="fa fa-credit-card mr-2"></i> <span>{{ client.cin }}</span></h5>
+                </div>
+                <div class="col offset-xl-1 text-center" style="width: 354px;height: 210px;padding: 0px;margin-left: 9.1562px;margin-right: 108px;">
+                  <h5 style="padding: 15px"><i class="fa fa-venus-mars mr-2"></i> <span>{{ client.sexe }}</span></h5>
+                  <h5 style="padding: 15px"><i class="fa fa-suitcase mr-2"></i> <span>{{ client.profession }}</span></h5>
+                  <h5 style="padding: 15px">
+                    <a href="{% url 'client_modifier' client.id %}"><i class="fa fa-edit mr-2 text-primary" style="margin-right: 30px"></i></a>
+                    <a href="{% url 'client_effacer' client.id %}"><button class="btn btn-outline-primary"><i class="fa fa-trash mr-2"></i></button></a>
+                  </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 0px;height: 250px;">
+      <table class="table table-sm table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Début</th>
+            <th scope="col" class="text-center">Fin</th>
+            <th scope="col" class="text-center">Status</th>
+            {% comment %} <th scope="col" class="text-center">Client</th> {% endcomment %}
+            <th scope="col" class="text-center">Date de payement</th>
+            <th scope="col" class="text-center">Réf Chambre</th>
+            <th scope="col" class="text-center">Bâtiment</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for abonnement in abonnements%}
+          <tr>
+            <th class="text-center">{{ abonnement.debut }}</th>
+            <td class="text-center">{{ abonnement.fin }}</td>
+            <td class="text-center">{{ abonnement.status }}</td>
+            <td class="text-center">{{ abonnement.dateDePayement }}</td>
+            <td class="text-center">{{ abonnement.chambre }}</td>
+            <td class="text-center">{{ abonnement.appartement }}</td>
+            <td class="text-center">   
+              <a href="#" class="btn btn-outline-primary" role="button">Modifier</a>
+            </td>
+          </tr>
+         {% endfor %}
+        </tbody>
+      </table></div>
+</div>
+
+{% endblock %}

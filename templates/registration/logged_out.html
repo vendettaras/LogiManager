@@ -1,0 +1,27 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="{% static 'Client/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'Client/fontawesome/css/all.min.css' %}">
+    <script src="{% static 'Client/js/bootstrap.min.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deconnexion</title>
+    <div class="container" style="margin-top: 30px;">
+        <h3 class="text-center">Vous êtes déconnecté de l'application de Gestion de Logement</h3>
+        <a style="margin-left:500px"  href="{% url 'login' %}">
+            <button type="submit" style="border-radius: 30px;border-width: 2px;" class="btn btn-outline-primary">Reconnexion</button>
+        </a>
+    </div>
+    
+</head>
+<body>
+    
+</body>
+</html>
+
+{% endblock %}

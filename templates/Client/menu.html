@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+  
+  {% for appartement in appartements%}
+  <section>
+    <div class="container" style="margin-top: 75px;">
+        {% if appartement.appart_image %}
+        <div class="row">
+        <div class="col-md-12 col-xl-12" style="height: 602px;width: 1140px;">
+          <img style="width: 940px;height: 450px;margin-left: 90px" src= "{{ appartement.appart_image.url }}">
+          {% endif %}
+          <p class="text-center" style="height: 89px;width: 800px;margin: 0;margin-top: 30px;margin-left: 163px;margin-bottom: 0px;padding: 0px;">
+            <br><span style="color: rgb(0, 0, 0)">La cité nommée cité <a href="{% url 'appartement' appartement.id %}">"{{ appartement.nom_du_cite }}"</a> est situé à l'addresse {{ appartement.adresse}} avec {{ appartement.nombre_chambres }} chambre(s) qui ont leurs descriptions ci en bas à propos de leurs références, prix de location et leurs disponibilités.</span>
+            <br><br></p>
+        </div>
+      </div>
+       <div class="row justify-content-center" style="margin: 0px;margin-top: 0px;height: 341px;width: 1163px;line-height: 33px;font-size: 9px;margin-right: 46px;padding-right: 0px;padding-left: 0px;margin-left: -20px;margin-bottom: 15px;">
+                {% for chambre in appartement.chambres.all %}
+                <div class="col-md-3 text-center" style="box-shadow: 0px 0px 6px rgba(133,136,134,0.87);border-radius: 12px;border-width: 0px;border-style: none;width: 250px;margin-left: 32px;padding-right: 0px;padding-left: 0px;">  
+                  <img style="width: 250px;height: 180px;" src="{{ chambre.chambre_image.url }}">
+                    <p style="font-size: 12px;"><h6>Référence : {{ chambre.numero_du_chambre}}</h6></p>
+                    <p style="font-size: 12px;"><h6>Prix de location : {{ chambre.prix_de_location }}</h6></p>
+                    <p style="font-size: 12px;"><h6>Status : {{ chambre.status }}</h6></p>
+                    <p style="font-size: 12px;">
+                      <h6><a href="{% url 'chambre_modifier' chambre.id %}">
+                        <button class="btn btn-light">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                      </a>
+                      <a href="{% url 'chambre_effacer' chambre.id %}">
+                        <button class="btn btn-light ms-4">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </a></h6>
+                    </p>
+                </div>{% endfor %}
+            </div> 
+        </div>
+        {% endfor %}
+    </section>           
+</body>
+
+</html>
+  {% endblock %}

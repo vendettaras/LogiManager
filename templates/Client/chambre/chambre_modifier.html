@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container p-4" style="margin-top: 75px">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="col-md-9 m-auto" id="modification">
+      <div class="row mb-3">
+        <div class="col-md-6"> Réf N° : {{ form.numero_du_chambre }}</div>
+        <div class="col-md-6"> Prix de location : {{ form.prix_de_location }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6 form-group form-chek-inline">Status : {{ form.status }}</div>
+        <div class="col-md-6">Adresse : {{ form.addresse }}</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        
+      </div>
+      <div class="col-md-6">
+        
+      </div>
+    </div>
+    <div style="margin-left : 450px; margin-top: 20px">
+      <a href="{% url 'menu' %}" style="border-radius: 30px" class="btn btn-outline-primary" type="disabled" role="button">Annuler</a>
+      <input class="btn btn-primary" style="margin-left: 20px; border-radius: 30px;" type="submit" value="Enregistrer">
+    </div>
+  </form>
+</div>
+
+{% endblock %}

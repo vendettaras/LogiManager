@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 75px">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+        <a href="{% url 'ajouter_client' %}" style="border-radius: 30px" class="btn btn-primary" role="button">Ajouter un Client</a>
+      <table class="table table-sm table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Nom</th>
+            <th scope="col" class="text-center">Prénom</th>
+            <th scope="col" class="text-center">Contact</th>
+            <th scope="col" class="text-center">à propos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for client in clients%}
+          <tr>
+            <th class="text-center">{{ client.nom }}</th>
+            <td class="text-center">{{ client.prenom }}</td>
+            <td class="text-center">{{ client.contact }}</td>
+            <td class="text-center">   
+              <a href="{% url 'client' client.id %}" class="btn btn-outline-info" style="border-radius: 30px" role="button"><i class="fa fa-user"></i></a>
+            </td>
+          </tr>
+         {% endfor %}
+        </tbody>
+      </table>
+      <a href="{% url 'menu' %}" class="btn btn-outline-primary" style="border-radius: 30px; margin-left: 350px" role="button">Retour</a>
+    </div>
+  </div>
+</div>
+  {% endblock %}

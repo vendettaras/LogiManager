@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+  <div class="container" style="height: 462px;margin-top: 75px;">
+      <div class="row" style="margin-bottom: 28px;">
+          <div class="col-md-12" style="height: 150px;width: 300px;background: rgba(116,209,238,0.16);border-width: 0px;border-style: solid;border-radius: 30px;margin-left: 39px;">
+              <h1 style="width: 214px;font-size: 45px;margin-top: 40px;margin-left: 31px;height: 44.1875px;"><span style="color: rgba(33, 37, 41, 0.49); background-color: rgba(116, 209, 238, 0);">{{somme_prix_de_location}} Ar</span></h1> 
+              {% comment %} {{caissier.caisse}} {% endcomment %}
+
+              <h5 style="width: 73px;margin-top: 24px;margin-left: 98px;"><span style="color: rgba(33, 37, 41, 0.49);">Caisses</span></h5>
+          </div>
+          <div class="col-md-12" style="height: 150px;width: 300px;background: rgba(116,209,238,0.16);border-width: 0px;border-style: solid;border-radius: 30px;margin-left: 75px;">
+              <h1 style="width: 214px;font-size: 45px;margin-top: 40px;margin-left: 31px;height: 44.1875px;"><span style="color: rgba(33, 37, 41, 0.49); background-color: rgba(116, 209, 238, 0);">{{somme_prix_de_location1}} Ar</span></h1>
+              <h5 style="width: 73px;margin-top: 24px;margin-left: 105px;"><span style="color: rgba(33, 37, 41, 0.49);">Dettes</span></h5>
+          </div>
+          <div class="col-md-12" style="height: 150px;width: 300px;background: rgba(116,209,238,0.16);border-width: 0px;border-style: solid;border-radius: 30px;margin-left: 75px;">
+              <h1 class="text-center" style="width: 214px;font-size: 45px;margin-top: 40px;margin-left: 31px;height: 44.1875px;"><span style="color: rgba(33, 37, 41, 0.49)">{{nombre_lignes}}</span></h1>
+              <h5 style="width: 73px;margin-top: 24px;margin-left: 112px;"><span style="color: rgba(33, 37, 41, 0.49);">Clients</span></h5>
+          </div>
+      </div><a href="{% url 'abonnement_ajout' %}"><button class="btn" type="button" style="border-radius: 30px;box-shadow: -2px 2px 4px #96938e;border-width: 1px;border-color: rgba(116,209,238,0.49);margin-bottom: 10px;"><span style="color: rgba(33, 37, 41, 0.49);">Ajouter un abonnement</span></button></a>
+      <div class="row">
+          <div class="col-md-12" style="margin-bottom: 10px;height: 262px;">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr class="text-center">
+                              <th>Début</th>
+                              <th>Fin</th>
+                              <th>Status</th>
+                              <th>Client</th>
+                              <th>Date de payement</th>
+                              <th>Réf chambre</th>
+                              <th>Bâtiment</th>
+                              <th>Opérations</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {% for abonnement in abonnements%}
+                        <tr>
+                          <th class="text-center">{{ abonnement.debut }}</th>
+                          <td class="text-center">{{ abonnement.fin }}</td>
+                          <td class="text-center">{{ abonnement.status }}</td>
+                          <td class="text-center">{{ abonnement.client }}</td>
+                          <td class="text-center">{{ abonnement.dateDePayement }}</td>
+                          <td class="text-center">{{ abonnement.chambre }}</td>
+                          <td class="text-center">{{ abonnement.appartement }}</td>
+                          <td class="text-center">   
+                            <a href="{% url 'abonnement_modifier' abonnement.id %}"><i class="fa fa-edit mr-2 text-primary" style="margin-right: 30px"></i></a>
+                            <a href="{% url 'abonnement_effacer' abonnement.id %}"><button class="btn btn-outline-primary"><i class="fa fa-trash mr-2"></i></button></a>
+                          </td>
+                        </tr>
+                       {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+  {% endblock %}

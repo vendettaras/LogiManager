@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container text-center" style="height: 50vh; margin-top: 75px">
+
+    <p>
+    <h2>Êtes-vous sûr de supprimer l'appartement <span class="ml-2" style="color: rgb(155,196,226)">"{{item}}"</span></h2>
+    </p>
+
+    <form action="{% url 'appartement_effacer' item.id %}" method="POST">
+        {% csrf_token %}
+
+        <a href="{% url 'menu' %}" style="border-radius: 30px; border-width=1px" class="btn btn-outline-primary" type="disabled" role="button">Annuler</a>
+        <input style="border-radius: 30px" class="btn btn-primary" type="submit" value="Supprimer">
+    </form>
+
+</div>
+{% endblock %}

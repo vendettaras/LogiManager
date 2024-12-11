@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container p-4" style="margin-top: 75px">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="col-md-9 m-auto" id="modification">
+      <div class="row mb-3">
+        <div class="col-md-6">Nom : {{ form.nom }}</div>
+        <div class="col-md-6">Prénom : {{ form.prenom }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">Contact : {{ form.contact }}</div>
+        <div class="col-md-6">CIN : {{ form.cin }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">Sexe : {{ form.sexe }}</div>
+        <div class="col-md-6">Profession : {{ form.profession }}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <input class="btn btn-success" type="submit" value="Enregistrer">
+        </div>
+        <div class="col-md-6">
+          <a href="{% url 'menu' %}" class="btn btn-warning" type="disabled" role="button">Annuler</a>
+        </div>
+      </div>
+    </div>
+</div>
+<div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'Client/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'Client/fontawesome/css/all.min.css' %}">
+<script src="{% static 'Client/js/bootstrap.min.js' %}"></script>
+
+<body>
+
+<nav class="navbar navbar-dark navbar-expand-md fixed-top text-black-50 bg-dark fw-semibold text-bg-secondary d-lg-flex align-items-lg-end">
+  <div class="container-fluid"><a class="navbar-brand" href="{% url 'menu' %}">Accueil</a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+      <div id="navcol-1" class="collapse navbar-collapse">
+          <ul class="navbar-nav justify-content-center m-auto">
+              <li class="nav-item"><a class="nav-link active" href="{% url 'appartement_ajout' %}">Appartement +</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'tous_les_abonnements' %}">Abonnement</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'tous_les_clients' %}">Client</a></li>
+          </ul>
+            <li class="list-inline-item"><a href="{% url 'logout' %}" class="nav-link">Déconnexion</a></li>
+      </div>
+      
+  </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+
+</body>

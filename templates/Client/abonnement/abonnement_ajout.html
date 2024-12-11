@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% comment %} <div class="container" style="margin-top: 75px">
+<div class="row justify-content-center">
+    <div class="col-md-4 text-center mt-3"> {% endcomment %}
+        {% comment %} <a href="{% url 'chambre_ajout' %}" class="btn btn-success" role="button">Ajouter une chambre</a> {% endcomment %}
+        <form action="" method="POST">
+            <div class="form-group">
+            {% csrf_token %}
+            <body>
+                <div class="container" style="height: 625px;margin-top: 75px;">
+                    <div class="row" style="width: 700px;height: 625px;margin-top: 20px;margin-left: 188px;">
+                        <div class="col-xl-10" style="border-radius: 63px;width: 450px;height: 550px;margin-left: 140px;border: 2px groove var(--bs-primary) ;">
+                            <h2 style="width: 391px;margin-bottom: 0px;margin-left: 30px;margin-top: 50px;">Ajouter une abonnement</h2>
+                            <div class="input-group" style="width: 300px;margin-top: 40px;margin-left: 65px;"><span class="input-group-text">Début</span><input class="form-control" name="debut" type="date" style="width: 230px;"></div>
+                            <div class="input-group" style="width: 300px;margin-top: 20px;margin-left: 65px;"><span class="input-group-text">Fin</span><input class="form-control" name="fin" type="date" style="width: 230.406px;"></div>
+                            <div class="input-group" style="width: 300px;margin-top: 20px;margin-left: 65px;"><span class="input-group-text">Appartement</span>
+                                
+                                <select style="width: 135px;" class="form-control" name="appartement" id="sel1">
+                                        <option>------------------------</option>
+                                    {% for appartement in appartements%}<option>{{appartement.nom_du_cite}}</option>{% endfor %}
+                                </select>
+                              
+                            </div>
+                            <div class="input-group" style="width: 300px;margin-top: 20px;margin-left: 65px;">
+                                <span class="input-group-text" style="height: 38px;width: 82.2188px;">Chambre</span>
+                                <select style="width: 135px;" class="form-control" name="chambre" id="sel1">
+                                    <option>------------------------</option>
+                                {% for chambre in chambres%}<option>{{chambre.chambres_dispo}}</option>{% endfor %}
+                            </select>
+                            </div>
+                            <div class="input-group" style="width: 300px;margin-top: 20px;margin-left: 65px;">
+                                <span class="input-group-text" style="height: 38px;width: 82.2188px;">Client</span>
+                                <select style="width: 135px;" class="form-control" name="client" id="sel1">
+                                    <option>------------------------</option>
+                                {% for client in clients%}<option>{{client.nom}}</option>{% endfor %}
+                            </select>
+                            </div>
+                                <div class="input-group" style="width: 300px;margin-top: 20px;margin-left: 65px;">
+                                    <span class="input-group-text" style="height: 38px;width: 82.2188px;">Status</span>
+                                    <select style="width: 135px;" class="form-control" name="status" id="sel1">
+                                      <option>Non Payé</option>
+                                      <option>Payé</option>
+                                    </select>
+                                </div>
+                                  <div class="input-group-text" style="margin-left: 115px;width: 217.375px;margin-top: 30px;font-size: 0px;background: transparent;border-width: 0px;"><a href="{% url 'menu' %}"><button class="btn btn-outline-primary" type="button" style="margin-left: -7px;border-radius: 30px;border-width: 2px;">Annuler</button></a><button class="btn btn-primary" type="submit" style="margin-left: 18px;border-radius: 30px;">Enregistrer</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+            </div>
+        </form>
+{% endblock %}

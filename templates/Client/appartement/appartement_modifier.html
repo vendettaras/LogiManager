@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container p-4">
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-md-9 m-auto" id="modification">
+      <div class="row mb-3">
+        <div class="col-md-6">Nom du cité : {{ form.nom_du_cite }}</div>
+        <div class="col-md-6"> Addresse : {{ form.adresse }}</div>
+      </div>
+    <div class="row">
+      <div class="col-md-6">
+        <input class="btn btn-dark" type="submit" value="Enregistrer">
+        <a href="{% url 'menu' %}" class="btn btn-secondary" type="disabled" role="button">Annuler</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
